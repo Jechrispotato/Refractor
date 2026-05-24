@@ -1,0 +1,494 @@
+/* ===================================================
+   Mermaid Flowchart Visualizer — Stylesheet
+   =================================================== */
+
+/* ---- CSS Custom Properties (Theme) ---- */
+:root {
+  --color-bg:           #f0f2f5;
+  --color-surface:      #ffffff;
+  --color-border:       #d1d5db;
+  --color-border-focus: #3b82f6;
+  --color-header-bg:    #1e293b;
+  --color-header-text:  #f8fafc;
+  --color-header-sub:   #94a3b8;
+  --color-text:         #1e293b;
+  --color-text-muted:   #64748b;
+  --color-primary:      #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-secondary:    #64748b;
+  --color-secondary-dk: #475569;
+  --color-danger:       #ef4444;
+  --color-danger-dark:  #dc2626;
+  --color-export:       #059669;
+  --color-export-dark:  #047857;
+  --color-error-bg:     #fef2f2;
+  --color-error-border: #fca5a5;
+  --color-error-text:   #b91c1c;
+  --color-guide-head:   #f8fafc;
+  --color-guide-row:    #f1f5f9;
+  --color-code-bg:      #f1f5f9;
+  --font-mono:          'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  --font-sans:          'Segoe UI', system-ui, -apple-system, sans-serif;
+  --radius:             8px;
+  --radius-lg:          12px;
+  --shadow:             0 1px 3px rgba(0,0,0,.10), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:          0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --transition:         150ms ease;
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Header ---- */
+.app-header {
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  padding: 0.9rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.header-icon { font-size: 1.6rem; line-height: 1; }
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-header-text);
+}
+
+.header-sub {
+  font-size: 0.8rem;
+  color: var(--color-header-sub);
+  margin-left: 0.25rem;
+}
+
+/* ---- Main Layout (two-column grid) ---- */
+.app-main {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(340px, 480px) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* ---- Panel (shared card style) ---- */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.panel-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.panel-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ---- Code Editor (textarea) ---- */
+.code-editor {
+  width: 100%;
+  min-height: 360px;
+  resize: vertical;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  background: #f8fafc;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  tab-size: 2;
+}
+
+.code-editor:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+}
+
+.code-editor::placeholder { color: #b0bec5; }
+
+/* ---- Button Groups ---- */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.editor-btns { justify-content: flex-start; }
+.export-btns { justify-content: flex-end; }
+
+/* ---- Base Button ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition), opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.btn:active:not(:disabled) { transform: scale(0.97); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Button variants */
+.btn-primary   { background: var(--color-primary);   color: #fff; }
+.btn-primary:hover:not(:disabled)   { background: var(--color-primary-dark); }
+
+.btn-secondary { background: var(--color-secondary); color: #fff; }
+.btn-secondary:hover:not(:disabled) { background: var(--color-secondary-dk); }
+
+.btn-danger    { background: var(--color-danger);    color: #fff; }
+.btn-danger:hover:not(:disabled)    { background: var(--color-danger-dark); }
+
+.btn-export    { background: var(--color-export);    color: #fff; }
+.btn-export:hover:not(:disabled)    { background: var(--color-export-dark); }
+
+/* ---- Preview Container ---- */
+.preview-container {
+  min-height: 420px;
+  max-height: 72vh;
+  overflow: auto;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fafbfc;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.25rem;
+  position: relative;
+}
+
+/* Center the Mermaid SVG output */
+.preview-container > .mermaid-output {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Placeholder (empty state) ---- */
+.preview-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 2rem;
+  user-select: none;
+}
+
+.placeholder-icon { font-size: 2.5rem; opacity: 0.35; }
+
+.preview-placeholder p { font-size: 0.88rem; }
+
+.placeholder-hint {
+  font-size: 0.78rem;
+  color: #b0bec5;
+}
+
+/* ---- Error Message Box ---- */
+.error-box {
+  width: 100%;
+  background: var(--color-error-bg);
+  border: 1.5px solid var(--color-error-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  color: var(--color-error-text);
+}
+
+.error-box .error-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.error-box pre {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-error-text);
+  opacity: 0.85;
+}
+
+/* ---- Flowchart Symbols Guide ---- */
+.guide-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.guide-summary {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.6rem 0.9rem;
+  background: var(--color-guide-head);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition);
+}
+
+.guide-summary:hover { background: #e9edf2; }
+
+details[open] .guide-summary { border-bottom-color: var(--color-border); }
+
+.guide-summary::-webkit-details-marker { display: none; }
+
+.guide-summary::after {
+  content: '▸';
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  transition: transform var(--transition);
+}
+
+details[open] .guide-summary::after { transform: rotate(90deg); }
+
+.guide-body {
+  padding: 0.75rem 0.9rem 0.85rem;
+  background: var(--color-surface);
+}
+
+.guide-intro {
+  font-size: 0.77rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.77rem;
+}
+
+.guide-table th {
+  text-align: left;
+  font-weight: 700;
+  padding: 0.35rem 0.55rem;
+  background: var(--color-guide-head);
+  border-bottom: 1.5px solid var(--color-border);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.guide-table td {
+  padding: 0.32rem 0.55rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.guide-table tr:last-child td { border-bottom: none; }
+
+.guide-table tr:nth-child(even) td { background: var(--color-guide-row); }
+
+.guide-table code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+/* ---- Diagram List Panel ---- */
+.diagram-list-panel {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.diagram-list-header {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.75rem;
+  background: var(--color-guide-head);
+  border-bottom: 1.5px solid var(--color-border);
+  letter-spacing: 0.01em;
+}
+
+.diagram-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.diagram-list-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 0.42rem 0.75rem;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.diagram-list-btn:last-child { border-bottom: none; }
+
+.diagram-list-btn:hover {
+  background: #f0f4ff;
+  color: var(--color-primary);
+}
+
+.diagram-list-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---- Footer ---- */
+.app-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.app-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.app-footer a:hover { text-decoration: underline; }
+
+.footer-sep { margin: 0 0.4rem; }
+
+/* ---- Loading indicator (shown during async render) ---- */
+.preview-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Responsive: stack on small screens ---- */
+@media (max-width: 768px) {
+  .app-main {
+    grid-template-columns: 1fr;
+    padding: 0.85rem;
+  }
+
+  .code-editor { min-height: 240px; }
+
+  .preview-container {
+    min-height: 320px;
+    max-height: 60vh;
+  }
+
+  .header-sub { display: none; }
+
+  .export-btns { justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .header-title { font-size: 1rem; }
+  .btn { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
+}

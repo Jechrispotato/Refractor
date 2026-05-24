@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mermaid Flowchart Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Mermaid.js via CDN (v11) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <!-- html2canvas for PNG export -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <span class="header-icon">🔷</span>
+      <h1 class="header-title">Refractor</h1>
+      <span class="header-sub">Paste Mermaid code → see your diagram instantly</span>
+    </div>
+  </header>
+
+  <!-- ===== MAIN TWO-COLUMN LAYOUT ===== -->
+  <main class="app-main">
+
+    <!-- LEFT PANEL: Editor -->
+    <section class="panel panel-left" aria-label="Code Editor Panel">
+
+      <div class="panel-header">
+        <h2 class="panel-title">Refractor</h2>
+        <span class="panel-hint">Auto-renders as you type</span>
+      </div>
+
+      <!-- Textarea for Mermaid code input -->
+      <textarea
+        id="mermaid-input"
+        class="code-editor"
+        spellcheck="false"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="Type or paste your Mermaid flowchart code here..."
+        aria-label="Mermaid code input"
+      ></textarea>
+
+      <!-- Editor action buttons -->
+      <div class="btn-group editor-btns">
+        <button id="btn-render" class="btn btn-primary" title="Render the diagram">
+          ▶ Render Diagram
+        </button>
+        <button id="btn-load-sample" class="btn btn-secondary" title="Load a sample flowchart">
+          📂 Load Sample
+        </button>
+        <button id="btn-clear" class="btn btn-danger" title="Clear the editor">
+          🗑 Clear Code
+        </button>
+      </div>
+
+      <!-- Predefined Diagrams List -->
+      <div class="diagram-list-panel">
+        <div class="diagram-list-header">📋 Diagrams</div>
+        <div id="diagram-list" class="diagram-list"></div>
+      </div>
+
+      <!-- Flowchart Symbols Guide (collapsible) -->
+      <details class="guide-panel" open>
+        <summary class="guide-summary">📖 Flowchart Symbols Guide</summary>
+        <div class="guide-body">
+          <p class="guide-intro">Mermaid syntax → standard flowchart shape mapping:</p>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Mermaid Syntax</th>
+                <th>Shape</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>A([Label])</code></td>
+                <td>⬭ Oval / Terminator</td>
+                <td>Start or End of flowchart</td>
+              </tr>
+              <tr>
+                <td><code>B[/Label/]</code></td>
+                <td>▱ Parallelogram</td>
+                <td>Input / Output operation</td>
+              </tr>
+              <tr>
+                <td><code>C[Label]</code></td>
+                <td>▭ Rectangle</td>
+                <td>Process / Arithmetic / Data manipulation</td>
+              </tr>
+              <tr>
+                <td><code>D{Label?}</code></td>
+                <td>◇ Diamond</td>
+                <td>Decision / True-False / Branch</td>
+              </tr>
+              <tr>
+                <td><code>A --> B</code></td>
+                <td>→ Arrow</td>
+                <td>Flowline — direction of logic</td>
+              </tr>
+              <tr>
+                <td><code>A -->|label| B</code></td>
+                <td>→ Labeled Arrow</td>
+                <td>Conditional flowline with text</td>
+              </tr>
+              <tr>
+                <td><code>E((Label))</code></td>
+                <td>○ Circle</td>
+                <td>Page Connector / On-page reference</td>
+              </tr>
+              <tr>
+                <td><code>F[Off Page Connector]</code></td>
+                <td>▭ Rectangle (labeled)</td>
+                <td>Off-page continuation (use descriptive label)</td>
+              </tr>
+              <tr>
+                <td><code>subgraph Name … end</code></td>
+                <td>⬜ Subgraph</td>
+                <td>Group of related nodes / swimlane</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- RIGHT PANEL: Preview -->
+    <section class="panel panel-right" aria-label="Diagram Preview Panel">
+
+      <div class="panel-header">
+        <h2 class="panel-title">Diagram Preview</h2>
+        <!-- Export buttons — disabled until a valid diagram is rendered -->
+        <div class="btn-group export-btns">
+          <button id="btn-download-svg" class="btn btn-export" disabled title="Download as SVG">
+            ⬇ SVG
+          </button>
+          <button id="btn-download-png" class="btn btn-export" disabled title="Download as PNG">
+            ⬇ PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Diagram output area -->
+      <div id="preview-container" class="preview-container" aria-live="polite">
+        <!-- Placeholder shown before first render -->
+        <div class="preview-placeholder" id="preview-placeholder">
+          <span class="placeholder-icon">🔷</span>
+          <p>Your diagram will appear here.</p>
+          <p class="placeholder-hint">Click <strong>Render Diagram</strong> or start typing in the editor.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="app-footer">
+    <span>Powered by <a href="https://mermaid.js.org" target="_blank" rel="noopener">Mermaid.js</a></span>
+    <span class="footer-sep">·</span>
+    <span>Export via SVG serializer &amp; html2canvas</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
