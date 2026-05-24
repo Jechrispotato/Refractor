@@ -637,106 +637,114 @@ flowchart TD
 ---
 
 ## Figure 32: Use Case Diagram for Super Administrator
-```mermaid
-flowchart LR
-    SA([Super Administrator])
+@startuml
+left to right direction
 
-    subgraph AGAPP[" "]
-        UC1([Register LGU Municipalities])
-        UC2([Deactivate LGU Accounts])
-        UC3([Manage Feature Flags])
-        UC4([Monitor Cross-LGU Analytics])
-        UC5([Supervise Compliance])
-        UC6([Oversee User Accounts])
-    end
+actor "Super Administrator" as SA
 
-    SA --> UC1
-    SA --> UC2
-    SA --> UC3
-    SA --> UC4
-    SA --> UC5
-    SA --> UC6
-```
+rectangle "AGAPP" {
+  usecase "Register LGU Municipalities" as UC1
+  usecase "Deactivate LGU Accounts" as UC2
+  usecase "Manage Feature Flags" as UC3
+  usecase "Monitor Cross-LGU Analytics" as UC4
+  usecase "Supervise Compliance" as UC5
+  usecase "Oversee User Accounts" as UC6
+}
+
+SA --> UC1
+SA --> UC2
+SA --> UC3
+SA --> UC4
+SA --> UC5
+SA --> UC6
+
+@enduml
 
 ---
 
 ## Figure 33: Use Case Diagram for LGU Administrator
-```mermaid
-flowchart LR
-    LA([LGU Administrator])
+@startuml
+left to right direction
 
-    subgraph AGAPP[" "]
-        UC1([Manage Service Requests])
-        UC2([Process Issue Reports])
-        UC3([Configure Office Assignments])
-        UC4([Publish News])
-        UC5([Moderate Forum])
-        UC6([Maintain Knowledge Base])
-        UC7([Manage Staff Accounts])
-        UC8([Monitor RA 11032 Compliance])
-    end
+actor "LGU Administrator" as LA
 
-    LA --> UC1
-    LA --> UC2
-    LA --> UC3
-    LA --> UC4
-    LA --> UC5
-    LA --> UC6
-    LA --> UC7
-    LA --> UC8
-```
+rectangle "AGAPP" {
+  usecase "Manage Service Requests" as UC1
+  usecase "Process Issue Reports" as UC2
+  usecase "Configure Office Assignments" as UC3
+  usecase "Publish News" as UC4
+  usecase "Moderate Forum" as UC5
+  usecase "Maintain Knowledge Base" as UC6
+  usecase "Manage Staff Accounts" as UC7
+  usecase "Monitor RA 11032 Compliance" as UC8
+}
+
+LA --> UC1
+LA --> UC2
+LA --> UC3
+LA --> UC4
+LA --> UC5
+LA --> UC6
+LA --> UC7
+LA --> UC8
+
+@enduml
 
 ---
 
 ## Figure 34: Use Case Diagram for LGU Personnel
-```mermaid
-flowchart LR
-    LP([LGU Personnel])
+@startuml
+left to right direction
 
-    subgraph AGAPP[" "]
-        UC1([View Assigned Reports])
-        UC2([Update Status])
-        UC3([Attach Documents])
-        UC4([Post Status Updates])
-        UC5([Add Internal Notes])
-    end
+actor "LGU Personnel" as LP
 
-    LP --> UC1
-    LP --> UC2
-    LP --> UC3
-    LP --> UC4
-    LP --> UC5
-```
+rectangle "AGAPP" {
+  usecase "View Assigned Reports" as UC1
+  usecase "Update Status" as UC2
+  usecase "Attach Documents" as UC3
+  usecase "Post Status Updates" as UC4
+  usecase "Add Internal Notes" as UC5
+}
+
+LP --> UC1
+LP --> UC2
+LP --> UC3
+LP --> UC4
+LP --> UC5
+
+@enduml
 
 ---
 
 ## Figure 35: Use Case Diagram for Citizen
-```mermaid
-flowchart LR
-    CIT([Citizen])
+@startuml
+left to right direction
 
-    subgraph AGAPP[" "]
-        UC1([Sign Up / Login])
-        UC2([Apply for Documents])
-        UC3([Submit Issue Report])
-        UC4([Track Submission Status])
-        UC5([View News])
-        UC6([Open Town Map])
-        UC7([Call Emergency Hotlines])
-        UC8([Participate in Forum])
-        UC9([Ask Chatbot])
-    end
+actor "Citizen" as CIT
 
-    CIT --> UC1
-    CIT --> UC2
-    CIT --> UC3
-    CIT --> UC4
-    CIT --> UC5
-    CIT --> UC6
-    CIT --> UC7
-    CIT --> UC8
-    CIT --> UC9
-```
+rectangle "AGAPP" {
+  usecase "Sign Up / Login" as UC1
+  usecase "Apply for Documents" as UC2
+  usecase "Submit Issue Report" as UC3
+  usecase "Track Submission Status" as UC4
+  usecase "View News" as UC5
+  usecase "Open Town Map" as UC6
+  usecase "Call Emergency Hotlines" as UC7
+  usecase "Participate in Forum" as UC8
+  usecase "Ask Chatbot" as UC9
+}
+
+CIT --> UC1
+CIT --> UC2
+CIT --> UC3
+CIT --> UC4
+CIT --> UC5
+CIT --> UC6
+CIT --> UC7
+CIT --> UC8
+CIT --> UC9
+
+@enduml
 
 ---
 
