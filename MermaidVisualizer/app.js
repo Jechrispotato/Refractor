@@ -23,11 +23,11 @@ const DIAGRAMS = [
     end
 
     subgraph Output["OUTPUT"]
-        O1[\\E-Services Portal\\]
-        O2[\\Service Directory & Citizen Guide\\]
-        O3[\\Issue Reporting & Request Tracking\\]
-        O4[\\News, Forum, Chatbot, Maps\\]
-        O5[\\LGU Admin & Super Admin Dashboards\\]
+        O1[/E-Services Portal/]
+        O2[/Service Directory & Citizen Guide/]
+        O3[/Issue Reporting & Request Tracking/]
+        O4[/News, Forum, Chatbot, Maps/]
+        O5[/LGU Admin & Super Admin Dashboards/]
     end
 
     subgraph Evaluation["EVALUATION"]
@@ -70,19 +70,19 @@ Performance & Effectiveness/]
     Login --> Auth{Authenticated?}
     Auth -->|No| Login
     Auth -->|Yes| Main[Main Interface]
-    Main --> OP1[[Off-page: Core Management]]
-    Main --> OP2[[Off-page: Admin Tools]]`
+    Main --> OP1((A))
+    Main --> OP2((B))`
   },
   {
     label: 'Fig 3B — Super Admin Core Mgmt',
     code: `flowchart TD
-    OP1[[Off-page: From Main Interface]] --> LM[LGU Management]
+    OP1((A)) --> LM[LGU Management]
     OP1 --> CA[Cross-LGU Analytics]
     OP1 --> FF[Feature Flags]
 
-    LM --> Provision[Provision New Tenant Municipality]
-    LM --> Deactivate[Deactivate Existing Tenant]
-    LM --> EditLGU[Edit LGU Tenant Details]
+    LM --> Provision[Register New LGU Municipality]
+    LM --> Deactivate[Deactivate Existing LGU]
+    LM --> EditLGU[Edit LGU Details]
 
     CA --> Metrics[View Aggregated Metrics]
     CA --> Leader[Leaderboards: Resolution Time & Satisfaction]
@@ -99,7 +99,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 3C — Super Admin Tools',
     code: `flowchart TD
-    OP2[[Off-page: From Main Interface]] --> Comp[Compliance]
+    OP2((B)) --> Comp[Compliance]
     OP2 --> Settings[Configure Auth, Notification & Storage]
     OP2 --> UM[Oversee Accounts Across All LGUs]
     OP2 --> Logout([End])
@@ -121,13 +121,13 @@ Performance & Effectiveness/]
     Login --> Auth{Authenticated?}
     Auth -->|No| Login
     Auth -->|Yes| Main[Main Interface]
-    Main --> OP1[[Off-page: Core Operations]]
-    Main --> OP2[[Off-page: Admin Functions]]`
+    Main --> OP1((C))
+    Main --> OP2((D))`
   },
   {
     label: 'Fig 4B — LGU Admin Core Ops',
     code: `flowchart TD
-    OP1[[Off-page: From Main Interface]] --> Dash[Dashboard]
+    OP1((C)) --> Dash[Dashboard]
     OP1 --> SR[Service Requests]
     OP1 --> IR[Issue Reports]
     OP1 --> News[News and Announcements]
@@ -149,7 +149,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 4C — LGU Admin Functions',
     code: `flowchart TD
-    OP2[[Off-page: From Main Interface]] --> OA[Configure Report Routing Rules]
+    OP2((D)) --> OA[Configure Report Routing Rules]
     OP2 --> KB[Maintain Chatbot Source Documents]
     OP2 --> UM[Oversee LGU Staff Accounts]
     OP2 --> Logout([End])
@@ -163,19 +163,19 @@ Performance & Effectiveness/]
     code: `flowchart TD
     Start([Start]) --> Open[Open Dashboard]
     Open --> Gather[Gather Key Metrics]
-    Gather --> Display[\\Display Graphs and Heatmap of Municipality\\]
+    Gather --> Display[/Display Graphs and Heatmap of Municipality/]
     Display --> Filter{Apply Filters?}
     Filter -->|Yes| Adjust[Adjust Metrics by Date, Barangay, Category or Status]
     Filter -->|No| Generate[Generate Report]
     Adjust --> Generate
-    Generate --> Export[\\Print or Export Report\\]
+    Generate --> Export[/Print or Export Report/]
     Export --> End([End])`
   },
   {
     label: 'Fig 6 — Service Requests (LGU Admin)',
     code: `flowchart TD
     Start([Start]) --> Open[Open Service Requests Page]
-    Open --> Queue[\\Queue of Incoming Citizen Document Applications\\]
+    Open --> Queue[/Queue of Incoming Citizen Document Applications/]
     Queue --> Filter{Apply Filters?}
     Filter -->|Yes| Filtered[Filter by Service Type, Status or Office]
     Filter -->|No| Action[Select Application from Queue]
@@ -195,8 +195,8 @@ Performance & Effectiveness/]
     label: 'Fig 7 — Issue Reports (LGU Admin)',
     code: `flowchart TD
     Start([Start]) --> Open[Open Issue Reports Page]
-    Open --> MapView[\\Map View of All Open Reports\\]
-    Open --> Queue[\\Queue Grouped by Category\\]
+    Open --> MapView[/Map View of All Open Reports/]
+    Open --> Queue[/Queue Grouped by Category/]
     Queue --> AutoRoute[Auto-Routing Engine Assigns to Office]
     AutoRoute --> Decision{Admin Action}
     Decision -->|Verify| Acknowledge[Acknowledge Report]
@@ -204,10 +204,10 @@ Performance & Effectiveness/]
     Decision -->|Reject| Reject[Reject with Stated Reason]
     Acknowledge --> Status[Update Status]
     Reroute --> Status
-    Status --> Notify[\\Push Notification Sent to Citizen\\]
+    Status --> Notify[/Push Notification Sent to Citizen/]
     Notify --> Resolved{Resolved?}
     Resolved -->|No| Status
-    Resolved -->|Yes| Log[\\Generate Printable Resolution Log\\]
+    Resolved -->|Yes| Log[/Generate Printable Resolution Log/]
     Reject --> End([End])
     Log --> End`
   },
@@ -215,7 +215,7 @@ Performance & Effectiveness/]
     label: 'Fig 8 — News and Announcements',
     code: `flowchart TD
     Start([Start]) --> Open[Open News and Announcements Page]
-    Open --> PostList[\\List of Existing Announcements\\]
+    Open --> PostList[/List of Existing Announcements/]
     PostList --> Action{Select Action}
     Action -->|Create New| Draft[Open Draft Editor]
     Action -->|Edit Existing| Edit[Edit Selected Post]
@@ -226,15 +226,15 @@ Performance & Effectiveness/]
     Schedule -->|No| Publish[Publish Immediately]
     SetDate --> Wait[Wait for Scheduled Date]
     Wait --> Publish
-    Publish --> Visible[\\Post Visible in Citizen Mobile App\\]
-    Visible --> Notify[\\Push Notification Sent to Citizens\\]
+    Publish --> Visible[/Post Visible in Citizen Mobile App/]
+    Visible --> Notify[/Push Notification Sent to Citizens/]
     Notify --> End([End])`
   },
   {
     label: 'Fig 9 — Forum Moderation',
     code: `flowchart TD
     Start([Start]) --> Open[Open Forum Moderation Page]
-    Open --> NewPost[\\Citizen Submits New Post\\]
+    Open --> NewPost[/Citizen Submits New Post/]
     NewPost --> Filter[Automated Profanity Filter and Image Safety Scan]
     Filter --> Pass{Passes Filter?}
     Pass -->|Yes| Publish[Publish Post Immediately]
@@ -245,8 +245,8 @@ Performance & Effectiveness/]
     Decision -->|Edit| EditPost[Edit Post Content]
     EditPost --> Publish
     Decision -->|Reject| Reject[Reject with Stated Reason]
-    Publish --> Notify1[\\Citizen Notified: Post Published\\]
-    Reject --> Notify2[\\Citizen Notified: Post Rejected\\]
+    Publish --> Notify1[/Citizen Notified: Post Published/]
+    Reject --> Notify2[/Citizen Notified: Post Rejected/]
     Notify1 --> Log[Action Logged]
     Notify2 --> Log
     Log --> End([End])`
@@ -255,7 +255,7 @@ Performance & Effectiveness/]
     label: 'Fig 10 — Office Assignments',
     code: `flowchart TD
     Start([Start]) --> Open[Open Office Assignments Page]
-    Open --> View[\\View Current Routing Ruleset\\]
+    Open --> View[/View Current Routing Ruleset/]
     View --> Action{Select Action}
     Action -->|Add New Rule| Add[Add New Routing Rule]
     Action -->|Edit Existing| Edit[Edit Selected Rule]
@@ -273,16 +273,16 @@ Performance & Effectiveness/]
     label: 'Fig 11A — User Mgmt Access',
     code: `flowchart TD
     Start([Start]) --> Open[Open User Management Page]
-    Open --> Users[\\View List of User Accounts\\]
+    Open --> Users[/View List of User Accounts/]
     Users --> Filter{Apply Filters?}
     Filter -->|Yes| Search[Filter by Role or Status]
-    Filter -->|No| OP1[[Off-page: User Actions]]
+    Filter -->|No| OP1((E))
     Search --> OP1`
   },
   {
     label: 'Fig 11B — User Mgmt Actions',
     code: `flowchart TD
-    OP1[[Off-page: From Filter/Search]] --> Action{Select Action}
+    OP1((E)) --> Action{Select Action}
     Action -->|Add User| Add[Add New User Account]
     Action -->|Edit User| Edit[Edit User Details]
     Action -->|Archive User| Archive[Archive User Account]
@@ -290,13 +290,13 @@ Performance & Effectiveness/]
     Edit --> Save
     Archive --> Save
     Save --> Done([End])
-    Action -->|Generate Report| OP2[[Off-page: Reporting]]`
+    Action -->|Generate Report| OP2((F))`
   },
   {
     label: 'Fig 11C — User Mgmt Reports',
     code: `flowchart TD
-    OP2[[Off-page: From User Actions]] --> Report[\\Generate User Report\\]
-    OP2 --> Logs[\\View User Activity Logs\\]
+    OP2((F)) --> Report[/Generate User Report/]
+    OP2 --> Logs[/View User Activity Logs/]
     OP2 --> Backup[Perform Backup or Restore]
 
     Report --> End([End])
@@ -317,13 +317,13 @@ Performance & Effectiveness/]
     Auth -->|No| Login
     Auth -->|Yes| Main[Main Interface]
     Profile --> Main
-    Main --> OP1[[Off-page: Core Services]]
-    Main --> OP2[[Off-page: Account Options]]`
+    Main --> OP1((G))
+    Main --> OP2((H))`
   },
   {
     label: 'Fig 12B — Citizen Core Svcs',
     code: `flowchart TD
-    OP1[[Off-page: From Main Interface]] --> SD[Service Directory]
+    OP1((G)) --> SD[Service Directory]
     OP1 --> SR[Submit Report]
     OP1 --> TR[Track Report]
     OP1 --> News[News and Announcements]
@@ -334,7 +334,7 @@ Performance & Effectiveness/]
 
     SD --> Apply[Apply for LGU Documents]
     SR --> Report[Submit GPS-Based Issue Report]
-    TR --> Status[\\Check Submission Status\\]
+    TR --> Status[/Check Submission Status/]
 
     Apply --> Done([End])
     Report --> Done
@@ -343,7 +343,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 12C — Citizen Account',
     code: `flowchart TD
-    OP2[[Off-page: From Main Interface]] --> Settings[Manage Account Settings]
+    OP2((H)) --> Settings[Manage Account Settings]
     OP2 --> History[View Submission History]
     OP2 --> Logout([End])
 
@@ -362,10 +362,9 @@ Performance & Effectiveness/]
     Save --> Continue{Continue Later?}
     Continue -->|Yes| Form
     Continue -->|No| End([End])
-    Submit --> QR[\\Generate Reference Number and QR Code\\]
+    Submit --> QR[/Generate Reference Number and QR Code/]
     QR --> Present[Present QR Code at Municipal Hall Counter]
-    Present --> Pay[Payment and Document Release In Person]
-    Pay --> End`
+    Present --> End`
   },
   {
     label: 'Fig 14 — Submit Report (Citizen)',
@@ -386,7 +385,7 @@ Performance & Effectiveness/]
 
     Check -->|No| Desc
     Desc --> Submit[Submit Report]
-    Submit --> Ref[\\Generate Reference Number\\]
+    Submit --> Ref[/Generate Reference Number/]
     Ref --> Track[Add to Citizen Tracking List]
     Track --> Success([End])
     Cancel --> End([End])`
@@ -395,9 +394,9 @@ Performance & Effectiveness/]
     label: 'Fig 15 — Track Report (Citizen)',
     code: `flowchart TD
     Start([Start]) --> Open[Open Track Report Screen]
-    Open --> List[\\View List of Service Requests and Issue Reports\\]
+    Open --> List[/View List of Service Requests and Issue Reports/]
     List --> Select[Select a Submission]
-    Select --> Status[\\View Current Status and Assigned Office\\]
+    Select --> Status[/View Current Status and Assigned Office/]
     Status --> StatusVal{Current Status}
     StatusVal -->|Submitted| S1[Submitted]
     StatusVal -->|Under Review| S2[Under Review]
@@ -418,15 +417,15 @@ Performance & Effectiveness/]
     label: 'Fig 16 — Town Map (Citizen)',
     code: `flowchart TD
     Start([Start]) --> Open[Open Town Map]
-    Open --> OSM[\\Render OpenStreetMap Tiles with Key Landmarks\\]
+    Open --> OSM[/Render OpenStreetMap Tiles with Key Landmarks/]
     OSM --> Action{User Action}
     Action -->|Search| Search[/Enter Landmark Name/]
     Action -->|Tap Pin| Details[View Landmark Details]
     Action -->|Get Directions| Navigate[Get Route to Location]
     Search --> Pin[Drop Pin on Matching Landmark]
     Pin --> Details
-    Details --> Info[\\Display Office Hours and Contact Information\\]
-    Navigate --> Route[\\Display Route to Selected Location\\]
+    Details --> Info[/Display Office Hours and Contact Information/]
+    Navigate --> Route[/Display Route to Selected Location/]
     Info --> End([End])
     Route --> End`
   },
@@ -444,7 +443,7 @@ Performance & Effectiveness/]
     Call2 --> SOS
     Call3 --> SOS
     Call4 --> SOS
-    SOS -->|Yes| Share[\\Share GPS Location with MDRRMO Duty Desk\\]
+    SOS -->|Yes| Share[/Share GPS Location with MDRRMO Duty Desk/]
     SOS -->|No| End([End])
     Share --> Duty[Notify MDRRMO Duty Desk]
     Duty --> End`
@@ -454,18 +453,18 @@ Performance & Effectiveness/]
     code: `flowchart TD
     Start([Start]) --> Open[Open Community Forum]
     Open --> Action{Select Action}
-    Action -->|Browse| Browse[\\Browse Recent Posts\\]
+    Action -->|Browse| Browse[/Browse Recent Posts/]
     Action -->|Search| Search[/Enter Keyword/]
     Action -->|Compose| Compose[/Write New Forum Post/]
     Browse --> Interact[Like, Comment on, or Report a Post]
-    Search --> Results[\\Display Matching Posts\\]
+    Search --> Results[/Display Matching Posts/]
     Results --> Interact
     Compose --> Filter[Automated Profanity Filter and Image Safety Scan]
     Filter --> Pass{Passes Filter?}
     Pass -->|Yes| Published[Post Published Immediately]
     Pass -->|No| Await[Post Placed in Moderation Queue]
-    Published --> Notify1[\\Citizen Notified: Post Published\\]
-    Await --> Notify2[\\Citizen Notified: Post Pending Moderation\\]
+    Published --> Notify1[/Citizen Notified: Post Published/]
+    Await --> Notify2[/Citizen Notified: Post Pending Moderation/]
     Notify1 --> End([End])
     Notify2 --> End
     Interact --> End`
@@ -475,24 +474,22 @@ Performance & Effectiveness/]
     code: `flowchart TD
     Start([Start]) --> Open[Open Chatbot Interface]
     Open --> Input[/Citizen Types a Question/]
-    Input --> RAG[Run Similarity Search Against LGU Knowledge Base via pgvector]
-    RAG --> Score{Similarity Score Above Threshold?}
+    Input --> FAQ[Search LGU FAQ Knowledge Base]
+    FAQ --> Match{FAQ Match Found?}
 
-    Score -->|Yes| Answer[Retrieve Matching Answer from Knowledge Base]
-    Answer --> Source[\\Return Answer with Source Document\\]
+    Match -->|Yes| Answer[Retrieve Matching FAQ Answer]
+    Answer --> Source[/Return Answer with Source Document/]
     Source --> Done([End])
 
-    Score -->|No| Fallback[Return Safe Fallback Message]
-    Fallback --> Ticket{Offer to File Support Ticket?}
-    Ticket -->|Yes| File[Open Support Ticket on Citizen Behalf]
-    Ticket -->|No| Done
-    File --> Done`
+    Match -->|No| Gemini[Query Gemini AI for Answer]
+    Gemini --> GemRes[/Return Gemini-Generated Answer/]
+    GemRes --> Done`
   },
   {
     label: 'Fig 20 — Account Settings (Citizen)',
     code: `flowchart TD
     Start([Start]) --> Open[Open Account Settings Screen]
-    Open --> Review[\\Review Current Preferences\\]
+    Open --> Review[/Review Current Preferences/]
     Review --> Change{Changes Needed?}
     Change -->|No| Main[Return to Main Interface]
     Change -->|Yes| Edit{Select Setting to Edit}
@@ -504,8 +501,8 @@ Performance & Effectiveness/]
     Notif --> Submit
     Lang --> Submit
     Theme --> Submit
-    Submit --> Confirm[\\Confirm Modifications Applied\\]
-    Confirm --> Links[\\View External Links: Official Facebook and YouTube\\]
+    Submit --> Confirm[/Confirm Modifications Applied/]
+    Confirm --> Links[/View External Links: Official Facebook and YouTube/]
     Links --> Main
     Main --> End([End])`
   },
@@ -515,8 +512,8 @@ Performance & Effectiveness/]
     actor "Super Administrator" as SA
 
     package AGAPP {
-        usecase "Provision LGU Tenants" as UC1
-        usecase "Deactivate Tenants" as UC2
+        usecase "Register LGU Municipalities" as UC1
+        usecase "Deactivate LGU Accounts" as UC2
         usecase "Manage Feature Flags" as UC3
         usecase "Monitor Cross-LGU Analytics" as UC4
         usecase "Supervise Compliance" as UC5
@@ -609,7 +606,7 @@ Performance & Effectiveness/]
     end
 
     subgraph Sprint1["Sprint 1: Auth"]
-        S1[Login/OTP<br/>Role Access<br/>Multi-tenant RLS]
+        S1[Login/OTP<br/>Role Access<br/>Data Isolation]
     end
 
     subgraph Sprint2["Sprint 2: Service Directory"]
@@ -621,7 +618,7 @@ Performance & Effectiveness/]
     end
 
     subgraph Sprint4["Sprint 4: News/Forum/Chatbot"]
-        S4[News Publishing<br/>Forum Moderation<br/>Keyword Chatbot]
+        S4[News Publishing<br/>Forum Moderation<br/>FAQ Chatbot + Gemini]
     end
 
     subgraph Sprint5["Sprint 5: Admin Dashboards"]
