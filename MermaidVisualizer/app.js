@@ -335,10 +335,16 @@ Performance & Effectiveness/]
     SD --> Apply[Apply for LGU Documents]
     SR --> Report[Submit GPS-Based Issue Report]
     TR --> Status[/Check Submission Status/]
+    News --> ViewNews[View Page]
+    Map --> I((I))
+    SOS --> J((J))
+    Forum --> K((K))
+    Chat --> L((L))
 
     Apply --> Done([End])
     Report --> Done
-    Status --> Done`
+    Status --> Done
+    ViewNews --> Done`
   },
   {
     label: 'Fig 12C — Citizen Account',
@@ -416,7 +422,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 16 — Town Map (Citizen)',
     code: `flowchart TD
-    Start([Start]) --> Open[Open Town Map]
+    Start((I)) --> Open[Open Town Map]
     Open --> OSM[/Render OpenStreetMap Tiles with Key Landmarks/]
     OSM --> Action{User Action}
     Action -->|Search| Search[/Enter Landmark Name/]
@@ -432,7 +438,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 17 — Emergency Hotlines (Citizen)',
     code: `flowchart TD
-    Start([Start]) --> Open[Open Emergency Hotlines Screen]
+    Start((J)) --> Open[Open Emergency Hotlines Screen]
     Open --> Select[/Select a Hotline/]
     Select --> Type{Hotline Type}
     Type -->|Police| Call1[Place Call to Police]
@@ -451,7 +457,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 18 — Community Forum (Citizen)',
     code: `flowchart TD
-    Start([Start]) --> Open[Open Community Forum]
+    Start((K)) --> Open[Open Community Forum]
     Open --> Action{Select Action}
     Action -->|Browse| Browse[/Browse Recent Posts/]
     Action -->|Search| Search[/Enter Keyword/]
@@ -472,7 +478,7 @@ Performance & Effectiveness/]
   {
     label: 'Fig 19 — Chatbot (Citizen)',
     code: `flowchart TD
-    Start([Start]) --> Open[Open Chatbot Interface]
+    Start((L)) --> Open[Open Chatbot Interface]
     Open --> Input[/Citizen Types a Question/]
     Input --> FAQ[Search LGU FAQ Knowledge Base]
     FAQ --> Match{FAQ Match Found?}
@@ -508,17 +514,17 @@ Performance & Effectiveness/]
   },
   {
     label: 'Fig 32 — Use Case: Super Administrator',
-    code: `useCaseDiagram
-    actor "Super Administrator" as SA
+    code: `flowchart LR
+    SA([Super Administrator])
 
-    package AGAPP {
-        usecase "Register LGU Municipalities" as UC1
-        usecase "Deactivate LGU Accounts" as UC2
-        usecase "Manage Feature Flags" as UC3
-        usecase "Monitor Cross-LGU Analytics" as UC4
-        usecase "Supervise Compliance" as UC5
-        usecase "Oversee User Accounts" as UC6
-    }
+    subgraph AGAPP[" "]
+        UC1([Register LGU Municipalities])
+        UC2([Deactivate LGU Accounts])
+        UC3([Manage Feature Flags])
+        UC4([Monitor Cross-LGU Analytics])
+        UC5([Supervise Compliance])
+        UC6([Oversee User Accounts])
+    end
 
     SA --> UC1
     SA --> UC2
@@ -529,19 +535,19 @@ Performance & Effectiveness/]
   },
   {
     label: 'Fig 33 — Use Case: LGU Administrator',
-    code: `useCaseDiagram
-    actor "LGU Administrator" as LA
+    code: `flowchart LR
+    LA([LGU Administrator])
 
-    package AGAPP {
-        usecase "Manage Service Requests" as UC1
-        usecase "Process Issue Reports" as UC2
-        usecase "Configure Office Assignments" as UC3
-        usecase "Publish News" as UC4
-        usecase "Moderate Forum" as UC5
-        usecase "Maintain Knowledge Base" as UC6
-        usecase "Manage Staff Accounts" as UC7
-        usecase "Monitor RA 11032 Compliance" as UC8
-    }
+    subgraph AGAPP[" "]
+        UC1([Manage Service Requests])
+        UC2([Process Issue Reports])
+        UC3([Configure Office Assignments])
+        UC4([Publish News])
+        UC5([Moderate Forum])
+        UC6([Maintain Knowledge Base])
+        UC7([Manage Staff Accounts])
+        UC8([Monitor RA 11032 Compliance])
+    end
 
     LA --> UC1
     LA --> UC2
@@ -554,16 +560,16 @@ Performance & Effectiveness/]
   },
   {
     label: 'Fig 34 — Use Case: LGU Personnel',
-    code: `useCaseDiagram
-    actor "LGU Personnel" as LP
+    code: `flowchart LR
+    LP([LGU Personnel])
 
-    package AGAPP {
-        usecase "View Assigned Reports" as UC1
-        usecase "Update Status" as UC2
-        usecase "Attach Documents" as UC3
-        usecase "Post Status Updates" as UC4
-        usecase "Add Internal Notes" as UC5
-    }
+    subgraph AGAPP[" "]
+        UC1([View Assigned Reports])
+        UC2([Update Status])
+        UC3([Attach Documents])
+        UC4([Post Status Updates])
+        UC5([Add Internal Notes])
+    end
 
     LP --> UC1
     LP --> UC2
@@ -573,30 +579,30 @@ Performance & Effectiveness/]
   },
   {
     label: 'Fig 35 — Use Case: Citizen',
-    code: `useCaseDiagram
-    actor "Citizen" as C
+    code: `flowchart LR
+    CIT([Citizen])
 
-    package AGAPP {
-        usecase "Sign Up/Login" as UC1
-        usecase "Apply for Documents" as UC2
-        usecase "Submit Issue Report" as UC3
-        usecase "Track Submission Status" as UC4
-        usecase "View News" as UC5
-        usecase "Open Town Map" as UC6
-        usecase "Call Emergency Hotlines" as UC7
-        usecase "Participate in Forum" as UC8
-        usecase "Ask Chatbot" as UC9
-    }
+    subgraph AGAPP[" "]
+        UC1([Sign Up / Login])
+        UC2([Apply for Documents])
+        UC3([Submit Issue Report])
+        UC4([Track Submission Status])
+        UC5([View News])
+        UC6([Open Town Map])
+        UC7([Call Emergency Hotlines])
+        UC8([Participate in Forum])
+        UC9([Ask Chatbot])
+    end
 
-    C --> UC1
-    C --> UC2
-    C --> UC3
-    C --> UC4
-    C --> UC5
-    C --> UC6
-    C --> UC7
-    C --> UC8
-    C --> UC9`
+    CIT --> UC1
+    CIT --> UC2
+    CIT --> UC3
+    CIT --> UC4
+    CIT --> UC5
+    CIT --> UC6
+    CIT --> UC7
+    CIT --> UC8
+    CIT --> UC9`
   },
   {
     label: 'Fig 36 — Agile Scrum Model',
@@ -629,8 +635,8 @@ Performance & Effectiveness/]
         S6[Security Review<br/>Performance Testing<br/>Privacy Compliance]
     end
 
-    subgraph Sprint7["Sprint 7: UAT + Release"]
-        S7[Beta Testing<br/>Bug Fixes<br/>Production Deploy]
+    subgraph Sprint7["Sprint 7: UAT + Capstone Deployment"]
+        S7[UAT with Respondents<br/>Bug Fixes<br/>Expo / APK + Free-Tier Cloud Deploy]
     end
 
     Sprint0 --> Sprint1 --> Sprint2 --> Sprint3 --> Sprint4 --> Sprint5 --> Sprint6 --> Sprint7
